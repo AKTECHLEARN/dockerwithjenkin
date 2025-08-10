@@ -33,4 +33,4 @@ for (let i = 0; i < 9; i++) {
     cell.addEventListener("click", handleClick);
     board.appendChild(cell);
     cells.push(cell);
-}
+} 
