@@ -1,22 +1,13 @@
-# Use Nginx base image
-FROM nginx:latest
+FROM nginx:alpine
 
-# Maintainer info (optional)
-LABEL maintainer="Ashutosh Singh <ashutosh@example.com>" \
-      description="Nginx container hosting Tic Tac Toe game"
+# Remove default nginx html files
+RUN rm -rf /usr/share/nginx/html/*
 
-# Set working directory for Nginx HTML
-WORKDIR /usr/share/nginx/html
+# Copy game files into nginx html directory
+COPY game/ /usr/share/nginx/html/
 
-# Remove default Nginx index file
-RUN rm -rf ./*
-
-# Copy game files into container
-# (You will need to have index.html, styles.css, script.js in the repo)
-COPY game/ .
-
-# Expose Nginx default port
+# Expose port 80
 EXPOSE 80
 
-# Start Nginx in foreground
+# Run nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
