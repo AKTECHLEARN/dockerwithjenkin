@@ -1,14 +1,16 @@
-# Use official Nginx image
+# Use the official Nginx base image
 FROM nginx:alpine
 
-# Remove default nginx website
+# Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy game files into nginx html folder
-COPY game/ /usr/share/nginx/html/
+# Copy Tic Tac Toe game files into Nginx web root
+COPY index.html /usr/share/nginx/html/
+COPY style.css /usr/share/nginx/html/
+COPY style.js /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80
 
-# Start Nginx
+# Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
