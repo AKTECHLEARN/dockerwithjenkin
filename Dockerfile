@@ -7,7 +7,7 @@ RUN rm -rf /usr/share/nginx/html/*
 # Copy Tic Tac Toe game files into Nginx web root
 COPY game/index.html /usr/share/nginx/html/
 COPY game/style.css /usr/share/nginx/html/
-COPY game/style.js /usr/share/nginx/html/
+COPY game/script.js /usr/share/nginx/html/
 
 
 # Expose port 80
