@@ -1,13 +1,14 @@
+# Use official Nginx image
 FROM nginx:alpine
 
-# Remove default nginx html files
+# Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy game files into nginx html directory
+# Copy game files into nginx html folder
 COPY game/ /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80
 
-# Run nginx in foreground
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
